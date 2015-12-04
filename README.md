@@ -30,4 +30,4 @@ docker rm -f $(docker ps -a|awk '{print $1}'|grep -v 'CONTAINER') ; sh -x instal
 未完待续。。。
 ## About
 
-我们是2个人的团队，docker以及系统调试是我弄的，安装shell是@Jorge Jiang写的。
+我们是2个人的团队，docker以及系统调试是我弄的，安装shell是 @oiovoyo 写的。
