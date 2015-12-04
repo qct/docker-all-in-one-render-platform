@@ -1,0 +1,1 @@
+## Docker all in one environment of render platform
