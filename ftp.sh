@@ -1,6 +1,6 @@
 #!/bin/sh
 ip=$1
-file=/home/ftp1/script/condor_base.py
+file=/home/ftp1/scripts/condor_base.py
 
 docker_host_ip_old=10.22.200.18
 docker_host_ip_new=$ip

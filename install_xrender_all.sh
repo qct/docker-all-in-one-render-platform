@@ -21,10 +21,12 @@ STEP="1"
 INSTALLATION_FAILURE=/tmp/XRENDE_installation_failure_exit_code
 [ -f $INSTALLATION_FAILURE ] && /bin/rm -f $INSTALLATION_FAILURE
 
-BASE_DIR=$1
+BASE_DIR=`dirname $0`
 
 [ ! -d $BASE_DIR ] && ( echo $BASE_DIR not exsist ; exit) 
 
+cd $BASE_DIR
+IP=$1
 DOCKER_DATA_BASE="/usr/local/xrender/data/"
 DOCKER_SH_BASE="/usr/local/xrender/sh/"
 
@@ -278,10 +280,18 @@ install_common()
     [ "$?" != "0" ] && ( fail "check_port $docker_tag failed" )
 }
 
-
+usage()
+{
+    if [ "$#" != "0" -o "$#" != "1" ] ; then 
+		echo "usage: $0 <IP_ADDRESS>"
+		echo "   IP_ADDRESS is an option"
+		exit 1
+	fi
+}
 
 main()
 {
+	usage $*
     # check linux releas type
     check_system
     
