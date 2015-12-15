@@ -259,6 +259,7 @@ docker_load_run()
     
 get_host_ip()
 {
+	[ -n $IP ] && ( echo $IP ; exit )
     eth=`route -n | awk '{if($1=="0.0.0.0" || $1=="default") print $8 }' | head -n 1`
     [ -z $eth ] && (fail "can not find default gatway")
     ip=`ifconfig $eth  | grep -E 'inet.[0-9]' | grep -v '127.0.0.1' | awk '{ print $2}'`
@@ -282,7 +283,7 @@ install_common()
 
 usage()
 {
-    if [ "$#" != "0" -o "$#" != "1" ] ; then 
+    if [ "$#" != "0" -a "$#" != "1" ] ; then 
 		echo "usage: $0 <IP_ADDRESS>"
 		echo "   IP_ADDRESS is an option"
 		exit 1
